@@ -1,0 +1,18 @@
+[Unit]
+Description=Telegram bot: учёт клиентов
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=botuser
+WorkingDirectory=/opt/client-bot
+EnvironmentFile=/opt/client-bot/.env
+ExecStart=/opt/client-bot/venv/bin/python /opt/client-bot/bot.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
